@@ -1,0 +1,15 @@
+{
+  "name": "vocesmr",
+  "version": "1.0.0",
+  "description": "VocesMR - Voice over agency plataform",
+  "private": true,
+  "type": "module",
+  "scripts": {},
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.6.0",
+      "onFail": "download"
+    }
+  }
+}
