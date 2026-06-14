@@ -207,7 +207,7 @@ importers:
 
   .: {}
 
-  apps/public:
+  apps/website:
     dependencies:
       astro:
         specifier: ^6.4.6
