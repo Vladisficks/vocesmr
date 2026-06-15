@@ -1,15 +1,132 @@
-<header>
-  <!-- Desktop-->
-  <nav>
-    <a href="#">Locutores</a>
-  </nav>
-  <a href="/"><img src="#" alt="Logo" /></a>
-  <button class="cta-btn">Solicita un Casting</button>
+---
+import { Icon } from "astro-icon/components";
+---
 
-  <!-- Mobile -->
-  <button class="burger-btn"></button>
-  <div class="drawer__container">
-    <a href="#">Locutores</a>
-    <button class="cta-drawer-btn">Solicita un Casting</button>
-  </div>
+<header>
+  <nav>
+    <a href="/" class="nav__logo"
+      ><img src="https://placehold.co/80x80" alt="Logo VocesMR" /></a
+    >
+
+    <div class="nav__actions">
+      <a href="#contactUs" class="nav__cta">Solicita un Casting</a>
+      <button class="nav__menu" id="navMenu" aria-label="Abrir menú">
+        <Icon name="material-symbols:menu-rounded" class="icon-menu" />
+        <Icon name="material-symbols:close-rounded" class="icon-close" />
+      </button>
+    </div>
+
+    <div class="nav__drawer" id="navDrawer">
+      <a href="/locutores">Locutores</a>
+      <a href="#aboutUs">Nosotros</a>
+    </div>
+  </nav>
 </header>
+
+<style>
+  /* -------- Mobile -------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--bg-surface);
+  }
+
+  /* -------- Mobile -------- */
+  .nav__logo img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  /* -------- Links -------- */
+  .nav__links {
+    display: none;
+    gap: 2rem;
+  }
+
+  .nav__links a,
+  .nav__drawer a {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1.2rem;
+  }
+
+  /* -------- Actions -------- */
+  .nav__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav__cta {
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: var(--accent-primary);
+    padding: 0.8rem;
+    border-radius: 2rem;
+  }
+
+  /* -------- Menu button -------- */
+  .nav__menu {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+
+  .icon-menu, .icon-close {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    color: var(--text-primary);
+  }
+
+  .icon-close {
+    opacity: 0;
+  }
+
+  .nav__drawer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+  }
+
+  .nav__drawer.active {
+    opacity: 1;
+    pointer-events: auto;
+    background-color: var(--bg-surface);
+    transform: translateY(0);
+  }
+
+  /* Tablet / Desktop */
+  @media (min-width: 768px) {
+  }
+</style>
+
+<script>
+  const navMenu = document.getElementById("navMenu");
+  const navDrawer = document.getElementById("navDrawer");
+
+  navMenu?.addEventListener("click", () => {
+    navDrawer?.classList.toggle("active");
+  });
+</script>
