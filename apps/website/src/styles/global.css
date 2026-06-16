@@ -8,8 +8,8 @@
   --bg-surface: #323232;
   --text-primary: #ffffff;
   --text-muted: #888888;
-  --accent-primary: #a10101;
-  --accent-hover: #cc0000;
+  --accent-primary: #c0392b;
+  --accent-hover: #a93226;
 
   /* Typography */
   --font-heading: "Mozilla Text", sans-serif;
@@ -35,7 +35,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  letter-spacing: 1px;
+  letter-spacing: 0.05rem;
 }
 
 a {
