@@ -3,17 +3,25 @@
 
 /* ------- Variables ------- */
 :root {
-  /* Colors */
-  --bg-primary: #1c1c1c;
-  --bg-surface: #323232;
-  --text-primary: #ffffff;
-  --text-muted: #888888;
-  --accent-primary: #c0392b;
-  --accent-hover: #a93226;
+  --bg-primary: #111114;
+  --bg-surface: #1f1f24;
+  --text-primary: #f2f2f2;
+  --text-muted: #a0a0a0;
+  --accent-primary: #c1121f;
+  --accent-hover: #8e0a15;
 
-  /* Typography */
+  --header-h: 4.5rem;
+
   --font-heading: "Mozilla Text", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
+
+  --container-max: 72rem;
+  --radius-md: 0.65rem;
+  --shadow-press: 0 3px 0 color-mix(in srgb, var(--accent-primary) 60%, #000000);
+  --shadow-press-hover: 0 4px 0
+    color-mix(in srgb, var(--accent-primary) 60%, #000000);
+  --focus-ring: 0 0 0 3px
+    color-mix(in srgb, var(--accent-primary) 40%, transparent);
 }
 
 /* ------- Reset ------- */
@@ -25,17 +33,29 @@
   padding: 0;
 }
 
-/* ------- Base ------- */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -46,4 +66,21 @@ a {
 img {
   max-width: 100%;
   display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 0.5rem;
 }
