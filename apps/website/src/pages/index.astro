@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import OurClients from "../components/OurClients.astro";
 ---
 
 <BaseLayout
@@ -8,6 +9,7 @@ import Hero from "../components/Hero.astro";
   description="Agencia de Locutores en México"
 >
   <main>
+    <Hero />
     <section id="ourServices">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur
@@ -24,14 +26,7 @@ import Hero from "../components/Hero.astro";
         Repellendus quis dolores blanditiis.
       </p>
     </section>
-    <section id="brands">
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, sed
-        iure. Modi in, corporis omnis obcaecati delectus excepturi repudiandae
-        pariatur id, aut deserunt, error fugiat ullam similique! Sequi, et
-        minima?
-      </p>
-    </section>
+    <OurClients />
     <section id="aboutUs">
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia maiores
@@ -80,3 +75,9 @@ import Hero from "../components/Hero.astro";
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .brands {
+    background-color: var(--accent-primary);
+  }
+</style>

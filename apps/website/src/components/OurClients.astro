@@ -1,0 +1,150 @@
+---
+
+---
+
+<section class="ourClients" id="ourClients">
+  <div class="ourClients__container">
+    <h2 class="ourClients-title">Nuestros Clientes</h2>
+    <div class="ourClients__carousel">
+      <div class="ourClients__track">
+        <img
+          src="../../public/logos/Bimbo.svg"
+          alt="Logo de Bimbo"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Ferrero.svg"
+          alt="Logo de Ferrero"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Ikea.svg"
+          alt="Logo de Ikea"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Jeep.svg"
+          alt="Logo de Jeep"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Loreal.svg"
+          alt="Logo de Loreal"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Movistar.svg"
+          alt="Logo de Movistar"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Nestle.svg"
+          alt="Logo de Nestle"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Nivea.svg"
+          alt="Logo de Nivea"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Pepsico.svg"
+          alt="Logo de Pepsico"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/RedBull.svg"
+          alt="Logo de Red Bull"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Sodimac.svg"
+          alt="Logo de Sodimac"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Telcel.svg"
+          alt="Logo de Telcel"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Vips.svg"
+          alt="Logo de Vips"
+          loading="lazy"
+        />
+        <img
+          src="../../public/logos/Walmart.svg"
+          alt="Logo de Walmart"
+          loading="lazy"
+        />
+
+        <!-- Duplicated logos -->
+        <img src="../../public/logos/Bimbo.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Ferrero.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Ikea.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Jeep.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Loreal.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Movistar.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Nestle.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Nivea.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Pepsico.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/RedBull.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Sodimac.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Telcel.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Vips.svg" alt="" loading="lazy" />
+        <img src="../../public/logos/Walmart.svg" alt="" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ourClients__container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--accent-primary);
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .ourClients-title {
+    text-align: center;
+    font-size: var(--fs-xl);
+    color: var(--text-primary);
+  }
+
+  .ourClients__carousel {
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+
+  .ourClients__track {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+    will-change: transform;
+  }
+
+  .ourClients__track img {
+    height: clamp(1.75rem, 1rem + 2vw, 2.5rem);
+    width: auto;
+    flex-shrink: 0;
+    margin-right: clamp(1.5rem, calc(2rem + 3vw), 4.5rem);
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

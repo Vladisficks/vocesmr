@@ -7,7 +7,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 <header class="header" id="header">
   <div class="header__container">
     <a href="/" class="header__logo">
-      <img src="https://placehold.co/800x250" alt="Logo VocesMR" />
+      <img src="https://placehold.co/250x100" alt="Logo VocesMR" />
     </a>
 
     <button
@@ -42,7 +42,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
   .header {
     position: fixed;
     inset: 0.75rem 0.75rem auto 0.75rem;
-    z-index: 100;
+    z-index: var(--z-header);
     border-radius: calc(8px + 0.5rem);
     background-color: rgba(31, 31, 36, 0);
     transition: background-color 0.3s ease-in-out;
@@ -69,7 +69,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
   }
 
   .header__logo img {
-    height: 2.75rem;
+    height: 2.5rem;
     width: auto;
     object-fit: contain;
     border-radius: 10px;
@@ -125,12 +125,11 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 
   /* ============ Navigation ============ */
   .header__nav {
-    /* Posicionamiento */
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0rem;
     right: 0rem;
-    z-index: 100;
+    z-index: var(--z-header);
     padding: 1rem;
     background-color: rgba(31, 31, 36, 0.95);
     border-radius: calc(8px + 0.5rem);
@@ -165,7 +164,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     width: 100%;
     padding: 0.75rem 0;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: var(--fs-base);
     font-weight: 500;
     letter-spacing: 0.05rem;
     transition: color 0.3s ease;
@@ -179,7 +178,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     width: 100%;
     padding: 0.625rem 1rem;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: var(--fs-md);
     font-weight: 600;
     background-color: var(--accent-primary);
     border-radius: 8px;
@@ -195,7 +194,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
   .header__backdrop {
     position: fixed;
     inset: 0;
-    z-index: 99;
+    z-index: var(--z-backdrop);
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(0);
     opacity: 0;
@@ -203,7 +202,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     transition:
       opacity 0.3s ease,
       backdrop-filter 0.3s ease,
-      background-color 0.3s ease; 
+      background-color 0.3s ease;
   }
 
   .header__backdrop.is-visible {
@@ -265,7 +264,6 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     .header__link {
       width: auto;
       padding: 0.5rem 0;
-      font-size: 1.125rem;
     }
 
     .header__link:hover {
@@ -276,7 +274,6 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
       width: auto;
       flex-shrink: 0;
       padding: 0.625rem 1.5rem;
-      font-size: 1rem;
     }
 
     .header__cta:hover {
@@ -292,12 +289,6 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
   const menuToggle = document.getElementById("menuToggle");
   const nav = document.getElementById("nav");
   const backdrop = document.getElementById("backdrop");
-
-  // ============= Scroll effect =============
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) header?.classList.add("is-scrolled");
-    else header?.classList.remove("is-scrolled");
-  });
 
   // ============= Open / Close menu =============
   function openMenu() {
@@ -322,6 +313,8 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     else openMenu();
   }
 
+  if (window.innerWidth >= 768) closeMenu();
+
   menuToggle?.addEventListener("click", toggleMenu);
 
   // ============= Close when clicks in a link/CTA =============
@@ -332,6 +325,12 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 
   // ============= Close when clicks in the backdrop =============
   backdrop?.addEventListener("click", closeMenu);
+
+  // ============= Scroll effect =============
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) header?.classList.add("is-scrolled");
+    else header?.classList.remove("is-scrolled");
+  });
 
   // ============= Close when back to desktop =============
   window.addEventListener("resize", () => {

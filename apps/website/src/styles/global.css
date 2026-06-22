@@ -10,18 +10,27 @@
   --accent-primary: #c1121f;
   --accent-hover: #8e0a15;
 
-  --header-h: 4.5rem;
-
   --font-heading: "Mozilla Text", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
 
-  --container-max: 72rem;
-  --radius-md: 0.65rem;
+  --fs-sm: clamp(0.8rem, 0.436rem + 0.091vw, 1.6rem);
+  --fs-base: clamp(1rem, 0.5rem + 0.15vw, 2rem);
+  --fs-md: clamp(1.25rem, 0.75rem + 0.15vw, 2.5rem);
+  --fs-lg: clamp(1.5rem, 0.8rem + 0.2vw, 3rem);
+  --fs-xl: clamp(2rem, 1rem + 0.2vw, 4.5rem);
+  --fs-xxl: clamp(2.5rem, 1.25rem + 2vw, 5rem);
+  --fs-xxxl: clamp(3.052rem, 1.665rem + 0.347vw, 6.104rem);
+
   --shadow-press: 0 3px 0 color-mix(in srgb, var(--accent-primary) 60%, #000000);
   --shadow-press-hover: 0 4px 0
     color-mix(in srgb, var(--accent-primary) 60%, #000000);
   --focus-ring: 0 0 0 3px
     color-mix(in srgb, var(--accent-primary) 40%, transparent);
+
+  /* ------- Z-index tokens ------- */
+  --z-backdrop: 90;
+  --z-header: 100;
+  --z-modal: 200;
 }
 
 /* ------- Reset ------- */
@@ -36,7 +45,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
 }
 
