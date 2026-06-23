@@ -4,38 +4,38 @@ const currentPath = Astro.url.pathname;
 const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 ---
 
-<header class="header" id="header">
-  <div class="header__container">
-    <a href="/" class="header__logo">
-      <img src="https://placehold.co/250x100" alt="Logo VocesMR" />
-    </a>
+  <header class="header" id="header">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        <img src="https://placehold.co/250x100" alt="Logo VocesMR" />
+      </a>
 
-    <button
-      class="header__menu-toggle"
-      id="menuToggle"
-      type="button"
-      aria-label="Abrir menú"
-      aria-expanded="false"
-      aria-controls="nav"
-    >
-      <Icon name="material-symbols:menu-rounded" class="icon-menu" />
-      <Icon name="material-symbols:close-rounded" class="icon-close" />
-    </button>
+      <button
+        class="header__menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="nav"
+      >
+        <Icon name="material-symbols:menu-rounded" class="icon-menu" />
+        <Icon name="material-symbols:close-rounded" class="icon-close" />
+      </button>
 
-    <nav class="header__nav" id="nav" aria-label="Navegación principal">
-      <div class="header__nav-content">
-        <div class="header__nav-links">
-          <a href="/" class="header__link">INICIO</a>
-          <a href="/locutores" class="header__link">LOCUTORES</a>
-          <a href={aboutHref} class="header__link">NOSOTROS</a>
+      <nav class="header__nav" id="nav" aria-label="Navegación principal">
+        <div class="header__nav-content">
+          <div class="header__nav-links">
+            <a href="/" class="header__link">INICIO</a>
+            <a href="/locutores" class="header__link">LOCUTORES</a>
+            <a href={aboutHref} class="header__link">NOSOTROS</a>
+          </div>
+
+          <a href="#contactUs" class="header__cta">Solicita un Casting</a>
         </div>
-
-        <a href="#contactUs" class="header__cta">Solicita un Casting</a>
-      </div>
-    </nav>
-  </div>
-</header>
-<div class="header__backdrop" id="backdrop"></div>
+      </nav>
+    </div>
+  </header>
+  <div class="header__backdrop" id="backdrop"></div>
 
 <style>
   /* ============ Header ============ */
@@ -137,7 +137,10 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     visibility: hidden;
     pointer-events: none;
     transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out,
+      transform 0.3s ease-in-out;
   }
 
   .header__nav.is-open {
@@ -170,6 +173,10 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     transition: color 0.3s ease;
   }
 
+  .header__link:hover {
+    color: var(--text-muted);
+  }
+
   .header__link:active {
     color: var(--text-muted);
   }
@@ -178,6 +185,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     width: 100%;
     padding: 0.625rem 1rem;
     text-align: center;
+    font-family: var(--font-heading);
     font-size: var(--fs-md);
     font-weight: 600;
     background-color: var(--accent-primary);
@@ -185,11 +193,16 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     box-shadow: var(--shadow-press);
   }
 
+  .header__cta:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-press-hover);
+  }
+
   .header__cta:active {
     transform: translateY(2px);
     box-shadow: 0 1px 0 color-mix(in srgb, var(--accent-primary) 60%, #000000);
   }
-
   /* ============ Backdrop ============ */
   .header__backdrop {
     position: fixed;
@@ -266,20 +279,10 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
       padding: 0.5rem 0;
     }
 
-    .header__link:hover {
-      color: var(--text-muted);
-    }
-
     .header__cta {
       width: auto;
       flex-shrink: 0;
       padding: 0.625rem 1.5rem;
-    }
-
-    .header__cta:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-press-hover);
     }
   }
 </style>
@@ -320,7 +323,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
   // ============= Close when clicks in a link/CTA =============
   nav?.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    if (target.closest("a")) closeMenu();
+    if (target.closest("a")) setTimeout(closeMenu, 150);
   });
 
   // ============= Close when clicks in the backdrop =============
