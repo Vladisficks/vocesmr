@@ -18,7 +18,10 @@ import { Icon } from "astro-icon/components";
           </div>
           <div class="contactUs__info-text">
             <span class="contactUs__info-label">Email</span>
-            <a href="mailto:monica.reyes.locutores@gmail.com" class="contactUs__info-link">
+            <a
+              href="mailto:monica.reyes.locutores@gmail.com"
+              class="contactUs__info-link"
+            >
               monica_reyes@vocesmr.com
             </a>
           </div>
@@ -41,23 +44,29 @@ import { Icon } from "astro-icon/components";
       </address>
     </div>
 
-    <div class="contactUs__form">
-      <form action="/contact" method="post">
+    <form class="contactUs__form" action="/contact" method="post">
+      <div class="contactUs__form-input">
         <label for="full-name">Nombre</label>
         <input type="text" name="full-name" id="full-name" required />
+      </div>
 
+      <div class="contactUs__form-input">
         <label for="company">Empresa / Marca</label>
         <input type="text" name="company" id="company" required />
+      </div>
 
+      <div class="contactUs__form-input">
         <label for="email">Email</label>
         <input type="email" name="email" id="email" required />
+      </div>
 
+      <div class="contactUs__form-input">
         <label for="message">Mensaje</label>
         <textarea name="message" id="message" rows="5" required></textarea>
+      </div>
 
-        <button type="submit">Enviar mensaje</button>
-      </form>
-    </div>
+      <button type="submit">Enviar mensaje</button>
+    </form>
   </div>
 </section>
 
@@ -114,6 +123,7 @@ import { Icon } from "astro-icon/components";
     align-items: center;
     justify-content: center;
     background-color: var(--accent-primary);
+    box-shadow: var(--shadow-press);
     border-radius: 8px;
     width: 2.8rem;
     height: 2.8rem;
@@ -142,5 +152,12 @@ import { Icon } from "astro-icon/components";
   .contactUs__form {
     display: flex;
     flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contactUs__form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
   }
 </style>
