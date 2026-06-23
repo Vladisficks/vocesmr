@@ -5,52 +5,51 @@
 <section class="ourClients" id="ourClients">
   <div class="ourClients__container">
     <h2 class="ourClients-title">Nuestros Clientes</h2>
-    <div class="ourClients__carousel">
-      <div class="ourClients__track">
-        <img src="/logos/Bimbo.svg" alt="Logo de Bimbo" loading="lazy" />
-        <img src="/logos/Ferrero.svg" alt="Logo de Ferrero" loading="lazy" />
-        <img src="/logos/Ikea.svg" alt="Logo de Ikea" loading="lazy" />
-        <img src="/logos/Jeep.svg" alt="Logo de Jeep" loading="lazy" />
-        <img
-          src="/logos/LittleCaesars.png"
-          alt="Logo de Little Caesars"
-          loading="lazy"
-        />
-        <img src="/logos/Loreal.svg" alt="Logo de Loreal" loading="lazy" />
-        <img src="/logos/Movistar.svg" alt="Logo de Movistar" loading="lazy" />
-        <img src="/logos/Nestle.svg" alt="Logo de Nestle" loading="lazy" />
-        <img src="/logos/Nivea.svg" alt="Logo de Nivea" loading="lazy" />
-        <img src="/logos/Ocesa.png" alt="Logo de Pepsico" loading="lazy" />
-        <img src="/logos/Pepsico.svg" alt="Logo de Ocesa" loading="lazy" />
-        <img src="/logos/RedBull.svg" alt="Logo de Red Bull" loading="lazy" />
-        <img src="/logos/Sodimac.svg" alt="Logo de Sodimac" loading="lazy" />
-        <img src="/logos/Telcel.svg" alt="Logo de Telcel" loading="lazy" />
-        <img src="/logos/Vips.svg" alt="Logo de Vips" loading="lazy" />
-        <img src="/logos/Walmart.svg" alt="Logo de Walmart" loading="lazy" />
-        <img src="/logos/Xcaret.svg" alt="Logo de Xcaret" loading="lazy" />
+    <div
+      class="ourClients__carousel"
+      aria-label="Marcas con las que trabajamos"
+      role="region"
+    >
+      <div class="ourClients__wrapper">
+        <div class="ourClients__track">
+          <img src="/logos/Bimbo.svg" alt="Logo de Bimbo" />
+          <img src="/logos/Ferrero.svg" alt="Logo de Ferrero" />
+          <img src="/logos/Ikea.svg" alt="Logo de Ikea" />
+          <img src="/logos/Jeep.svg" alt="Logo de Jeep" />
+          <img src="/logos/LittleCaesars.png" alt="Logo de Little Caesars" />
+          <img src="/logos/Loreal.svg" alt="Logo de Loreal" />
+          <img src="/logos/Movistar.svg" alt="Logo de Movistar" />
+          <img src="/logos/Nestle.svg" alt="Logo de Nestle" />
+          <img src="/logos/Nivea.svg" alt="Logo de Nivea" />
+          <img src="/logos/Ocesa.png" alt="Logo de Ocesa" />
+          <img src="/logos/Pepsico.svg" alt="Logo de Pepsico" />
+          <img src="/logos/RedBull.svg" alt="Logo de Red Bull" />
+          <img src="/logos/Sodimac.svg" alt="Logo de Sodimac" />
+          <img src="/logos/Telcel.svg" alt="Logo de Telcel" />
+          <img src="/logos/Vips.svg" alt="Logo de Vips" />
+          <img src="/logos/Walmart.svg" alt="Logo de Walmart" />
+          <img src="/logos/Xcaret.svg" alt="Logo de Xcaret" />
+        </div>
 
-        <!-- Duplicated logos -->
-        <img src="/logos/Bimbo.svg" alt="Logo de Bimbo" loading="lazy" />
-        <img src="/logos/Ferrero.svg" alt="Logo de Ferrero" loading="lazy" />
-        <img src="/logos/Ikea.svg" alt="Logo de Ikea" loading="lazy" />
-        <img src="/logos/Jeep.svg" alt="Logo de Jeep" loading="lazy" />
-        <img
-          src="/logos/LittleCaesars.png"
-          alt="Logo de Little Caesars"
-          loading="lazy"
-        />
-        <img src="/logos/Loreal.svg" alt="Logo de Loreal" loading="lazy" />
-        <img src="/logos/Movistar.svg" alt="Logo de Movistar" loading="lazy" />
-        <img src="/logos/Nestle.svg" alt="Logo de Nestle" loading="lazy" />
-        <img src="/logos/Nivea.svg" alt="Logo de Nivea" loading="lazy" />
-        <img src="/logos/Ocesa.png" alt="Logo de Pepsico" loading="lazy" />
-        <img src="/logos/Pepsico.svg" alt="Logo de Ocesa" loading="lazy" />
-        <img src="/logos/RedBull.svg" alt="Logo de Red Bull" loading="lazy" />
-        <img src="/logos/Sodimac.svg" alt="Logo de Sodimac" loading="lazy" />
-        <img src="/logos/Telcel.svg" alt="Logo de Telcel" loading="lazy" />
-        <img src="/logos/Vips.svg" alt="Logo de Vips" loading="lazy" />
-        <img src="/logos/Walmart.svg" alt="Logo de Walmart" loading="lazy" />
-        <img src="/logos/Xcaret.svg" alt="Logo de Xcaret" loading="lazy" />
+        <div class="ourClients__track" aria-hidden="true">
+          <img src="/logos/Bimbo.svg" alt="" />
+          <img src="/logos/Ferrero.svg" alt="" />
+          <img src="/logos/Ikea.svg" alt="" />
+          <img src="/logos/Jeep.svg" alt="" />
+          <img src="/logos/LittleCaesars.png" alt="" />
+          <img src="/logos/Loreal.svg" alt="" />
+          <img src="/logos/Movistar.svg" alt="" />
+          <img src="/logos/Nestle.svg" alt="" />
+          <img src="/logos/Nivea.svg" alt="" />
+          <img src="/logos/Ocesa.png" alt="" />
+          <img src="/logos/Pepsico.svg" alt="" />
+          <img src="/logos/RedBull.svg" alt="" />
+          <img src="/logos/Sodimac.svg" alt="" />
+          <img src="/logos/Telcel.svg" alt="" />
+          <img src="/logos/Vips.svg" alt="" />
+          <img src="/logos/Walmart.svg" alt="" />
+          <img src="/logos/Xcaret.svg" alt="" />
+        </div>
       </div>
     </div>
   </div>
@@ -67,7 +66,8 @@
 
   .ourClients-title {
     text-align: center;
-    font-size: var(--fs-xl);
+    font-size: var(--fs-lg);
+    font-weight: 700;
     color: var(--text-primary);
   }
 
@@ -82,12 +82,17 @@
     );
   }
 
-  .ourClients__track {
+  .ourClients__wrapper {
     display: flex;
     flex-wrap: nowrap;
     width: max-content;
-    animation: scroll 55s linear infinite;
+    animation: scroll 30s linear infinite;
     will-change: transform;
+  }
+
+  .ourClients__track {
+    display: flex;
+    flex-shrink: 0;
   }
 
   .ourClients__track img {
@@ -103,6 +108,12 @@
     }
     to {
       transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ourClients__wrapper {
+      animation: none;
     }
   }
 </style>

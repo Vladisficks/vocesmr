@@ -4,38 +4,46 @@ const currentPath = Astro.url.pathname;
 const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 ---
 
-  <header class="header" id="header">
-    <div class="header__container">
-      <a href="/" class="header__logo">
-        <img src="https://placehold.co/250x100" alt="Logo VocesMR" />
-      </a>
+<header class="header" id="header">
+  <div class="header__container">
+    <a href="/" class="header__logo">
+      <img src="https://placehold.co/250x100" alt="Logo VocesMR" />
+    </a>
 
-      <button
-        class="header__menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-label="Abrir menú"
-        aria-expanded="false"
-        aria-controls="nav"
-      >
-        <Icon name="material-symbols:menu-rounded" class="icon-menu" />
-        <Icon name="material-symbols:close-rounded" class="icon-close" />
-      </button>
+    <button
+      class="header__menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="nav"
+    >
+      <Icon
+        name="material-symbols:menu-rounded"
+        class="icon-menu"
+        aria-hidden="true"
+      />
+      <Icon
+        name="material-symbols:close-rounded"
+        class="icon-close"
+        aria-hidden="true"
+      />
+    </button>
 
-      <nav class="header__nav" id="nav" aria-label="Navegación principal">
-        <div class="header__nav-content">
-          <div class="header__nav-links">
-            <a href="/" class="header__link">INICIO</a>
-            <a href="/locutores" class="header__link">LOCUTORES</a>
-            <a href={aboutHref} class="header__link">NOSOTROS</a>
-          </div>
-
-          <a href="#contactUs" class="header__cta">Solicita un Casting</a>
+    <nav class="header__nav" id="nav" aria-label="Navegación principal">
+      <div class="header__nav-content">
+        <div class="header__nav-links">
+          <a href="/" class="header__link">INICIO</a>
+          <a href="/locutores" class="header__link">LOCUTORES</a>
+          <a href={aboutHref} class="header__link">NOSOTROS</a>
         </div>
-      </nav>
-    </div>
-  </header>
-  <div class="header__backdrop" id="backdrop"></div>
+
+        <a href="#contactUs" class="header__cta">Solicita un Casting</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="header__backdrop" id="backdrop"></div>
 
 <style>
   /* ============ Header ============ */
@@ -186,8 +194,8 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     padding: 0.625rem 1rem;
     text-align: center;
     font-family: var(--font-heading);
-    font-size: var(--fs-md);
-    font-weight: 600;
+    font-size: var(--fs-base);
+    font-weight: 700;
     background-color: var(--accent-primary);
     border-radius: 8px;
     box-shadow: var(--shadow-press);
