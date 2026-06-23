@@ -22,7 +22,7 @@ import { Icon } from "astro-icon/components";
               href="mailto:monica.reyes.locutores@gmail.com"
               class="contactUs__info-link"
             >
-              monica_reyes@vocesmr.com
+              monica.reyes@vocesmr.com
             </a>
           </div>
         </div>
@@ -233,14 +233,20 @@ import { Icon } from "astro-icon/components";
   @media (min-width: 768px) {
     .contactUs__container {
       flex-direction: row;
+      justify-content: space-between;
     }
 
     .contactUs__details {
-        align-items: flex-start;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    .contactUs__description {
+      text-align: left;
     }
 
     .contactUs__address {
-        gap: 1.5rem;
+      gap: 1.5rem;
     }
 
     .contactUs__mock-divider {
@@ -250,13 +256,13 @@ import { Icon } from "astro-icon/components";
     }
 
     .contactUs__form {
-        flex: 1;
+      flex: 1;
     }
 
     .contactUs__form-submit {
-        width: auto;
-        align-self: center;
-        padding: 0.625rem 2rem;
+      width: auto;
+      align-self: center;
+      padding: 0.625rem 2rem;
     }
   }
 </style>
