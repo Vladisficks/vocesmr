@@ -21,6 +21,13 @@
   --fs-xl: clamp(2rem, 1rem + 5vw, 3.5rem);
   --fs-xxl: clamp(2.5rem, 1.2rem + 6.5vw, 5rem);
 
+  /* Uppercase text needs extra air between characters for legibility */
+  --ls-caps: 0.05em;
+
+  /* Shared transition values — change once, updates everywhere */
+  --transition-speed: 0.15s;
+  --transition-ease: ease-in-out;
+
   --shadow-press: 0 3px 0 color-mix(in srgb, var(--accent-primary) 60%, #000000);
   --shadow-press-hover: 0 4px 0
     color-mix(in srgb, var(--accent-primary) 60%, #000000);

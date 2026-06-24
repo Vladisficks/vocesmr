@@ -5,10 +5,11 @@ import { Icon } from "astro-icon/components";
 <section class="contactUs" id="contactUs">
   <div class="contactUs__container">
     <div class="contactUs__details">
-      <h2 class="contactUs__title">Contáctanos</h2>
-      <h3 class="contactUs__subtitle">Háblanos sobre tu proyecto</h3>
+      <h2 class="contactUs__title">¡Contáctanos!</h2>
+      <h3 class="contactUs__subtitle">Cuéntanos tu proyecto</h3>
       <p class="contactUs__description">
-        Escríbenos y encontraremos la voz perfecta para tu campaña
+        Cuéntanos qué necesitas y en menos de 24 horas tienes opciones sobre la
+        mesa
       </p>
 
       <address class="contactUs__address">
@@ -19,7 +20,7 @@ import { Icon } from "astro-icon/components";
           <div class="contactUs__info-text">
             <span class="contactUs__info-label">Email</span>
             <a
-              href="mailto:monica.reyes.locutores@gmail.com"
+              href="mailto:monica.reyes@vocesmr.com"
               class="contactUs__info-link"
             >
               monica.reyes@vocesmr.com
@@ -48,28 +49,35 @@ import { Icon } from "astro-icon/components";
 
     <form class="contactUs__form" action="/contact" method="post">
       <div class="contactUs__form-input">
-        <label for="full-name">NOMBRE</label>
+        <label for="full-name">NOMBRE <span aria-hidden="true">*</span></label>
         <input type="text" name="full-name" id="full-name" required />
       </div>
 
       <div class="contactUs__form-input">
-        <label for="company">EMPRESA / MARCA</label>
+        <label for="company"
+          >EMPRESA / MARCA <span aria-hidden="true">*</span></label
+        >
         <input type="text" name="company" id="company" required />
       </div>
 
       <div class="contactUs__form-input">
-        <label for="email">EMAIL</label>
+        <label for="email">EMAIL <span aria-hidden="true">*</span></label>
         <input type="email" name="email" id="email" required />
       </div>
 
       <div class="contactUs__form-input">
-        <label for="message">MENSAJE</label>
-        <textarea name="message" id="message" rows="5" required></textarea>
+        <label for="tel">TELÉFONO</label>
+        <input type="tel" name="tel" id="tel">
       </div>
 
-      <button class="contactUs__form-submit" type="submit"
-        >Enviar mensaje</button
-      >
+      <div class="contactUs__form-input">
+        <label for="message">MENSAJE <span aria-hidden="true">*</span></label>
+        <textarea name="message" id="message" rows="4" required></textarea>
+      </div>
+
+      <button class="contactUs__form-submit" type="submit">
+        Solicitar casting
+      </button>
     </form>
   </div>
 </section>
@@ -93,19 +101,32 @@ import { Icon } from "astro-icon/components";
   }
 
   .contactUs__title {
+    position: relative;
+    padding-top: 0.5rem;
     font-size: var(--fs-lg);
     font-weight: 700;
     color: var(--accent-primary);
   }
 
+  .contactUs__title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background-color: var(--accent-primary);
+    border-radius: 999px;
+  }
+
   .contactUs__subtitle {
     padding-top: 1rem;
     font-size: var(--fs-md);
+    font-weight: 700;
   }
 
   .contactUs__description {
     font-size: var(--fs-base);
-    font-weight: 400;
     color: var(--text-muted);
     text-align: center;
   }
@@ -156,13 +177,17 @@ import { Icon } from "astro-icon/components";
 
   .contactUs__info-link {
     font-size: var(--fs-base);
-    font-weight: 400;
     overflow-wrap: break-word;
     word-break: break-all;
+    transition: color var(--transition-speed) var(--transition-ease);
+  }
+
+  .contactUs__info-link:hover {
+    color: var(--text-muted);
   }
 
   .contactUs__mock-divider {
-    height: 4px;
+    height: 2px;
     background: var(--bg-surface);
     border-radius: 2px;
   }
@@ -182,20 +207,25 @@ import { Icon } from "astro-icon/components";
   .contactUs__form-input label {
     font-size: var(--fs-sm);
     font-weight: 600;
+    letter-spacing: var(--ls-caps);
     color: var(--text-muted);
   }
 
+  .contactUs__form-input span {
+    color: var(--accent-primary);
+  }
+
   .contactUs__form-input input,
-  textarea {
+  .contactUs__form-input textarea {
     width: 100%;
     padding: 0.75rem 1rem;
     font-size: var(--fs-base);
-    font-weight: 400;
     background-color: var(--bg-surface);
     color: var(--text-primary);
     border: 1px solid #333;
     border-radius: 8px;
     resize: none;
+    transition: border-color var(--transition-speed) var(--transition-ease);
   }
 
   .contactUs__form-input input:focus-visible,
@@ -216,6 +246,10 @@ import { Icon } from "astro-icon/components";
     border: none;
     border-radius: 8px;
     box-shadow: var(--shadow-press);
+    transition:
+      background-color var(--transition-speed) var(--transition-ease),
+      transform var(--transition-speed) var(--transition-ease),
+      box-shadow var(--transition-speed) var(--transition-ease);
   }
 
   .contactUs__form-submit:hover {
@@ -229,7 +263,7 @@ import { Icon } from "astro-icon/components";
     box-shadow: 0 1px 0 color-mix(in srgb, var(--accent-primary) 60%, #000000);
   }
 
-  /* ============ Respons{ive ============ */
+  /* ============ Responsive ============ */
   @media (min-width: 768px) {
     .contactUs__container {
       flex-direction: row;
@@ -250,9 +284,8 @@ import { Icon } from "astro-icon/components";
     }
 
     .contactUs__mock-divider {
-      width: 4px;
+      width: 2px;
       height: auto;
-      background: var(--bg-surface);
     }
 
     .contactUs__form {

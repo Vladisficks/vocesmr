@@ -38,7 +38,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
           <a href={aboutHref} class="header__link">NOSOTROS</a>
         </div>
 
-        <a href="#contactUs" class="header__cta">Solicita un Casting</a>
+        <a href="#contactUs" class="header__cta">Solicita tu Casting</a>
       </div>
     </nav>
   </div>
@@ -53,7 +53,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     z-index: var(--z-header);
     border-radius: calc(8px + 0.5rem);
     background-color: rgba(31, 31, 36, 0);
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color var(--transition-speed) var(--transition-ease);
   }
 
   .header.is-open,
@@ -99,6 +99,16 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     border: none;
     color: var(--text-primary);
     cursor: pointer;
+    transition: background-color var(--transition-speed) var(--transition-ease);
+  }
+
+  .header__menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .header__menu-toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
   }
 
   .icon-menu,
@@ -107,8 +117,8 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     height: 2rem;
     width: 2rem;
     transition:
-      opacity 0.3s ease-in-out,
-      transform 0.3s ease-in-out;
+      opacity var(--transition-speed) var(--transition-ease),
+      transform var(--transition-speed) var(--transition-ease);
   }
 
   .icon-menu {
@@ -135,8 +145,8 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
   .header__nav {
     position: absolute;
     top: calc(100% + 0.5rem);
-    left: 0rem;
-    right: 0rem;
+    left: 0;
+    right: 0;
     z-index: var(--z-header);
     padding: 1rem;
     background-color: rgba(31, 31, 36, 0.95);
@@ -146,9 +156,9 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     pointer-events: none;
     transform: translateY(-10px);
     transition:
-      opacity 0.3s ease-in-out,
-      visibility 0.3s ease-in-out,
-      transform 0.3s ease-in-out;
+      opacity var(--transition-speed) var(--transition-ease),
+      visibility var(--transition-speed) var(--transition-ease),
+      transform var(--transition-speed) var(--transition-ease);
   }
 
   .header__nav.is-open {
@@ -177,8 +187,8 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     text-align: center;
     font-size: var(--fs-base);
     font-weight: 500;
-    letter-spacing: 0.05rem;
-    transition: color 0.3s ease;
+    letter-spacing: var(--ls-caps);
+    transition: color var(--transition-speed) var(--transition-ease);
   }
 
   .header__link:hover {
@@ -187,6 +197,13 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 
   .header__link:active {
     color: var(--text-muted);
+  }
+
+  .header__link:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 4px;
+    color: var(--text-primary);
   }
 
   .header__cta {
@@ -199,6 +216,10 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     background-color: var(--accent-primary);
     border-radius: 8px;
     box-shadow: var(--shadow-press);
+    transition:
+      background-color var(--transition-speed) var(--transition-ease),
+      transform var(--transition-speed) var(--transition-ease),
+      box-shadow var(--transition-speed) var(--transition-ease);
   }
 
   .header__cta:hover {
@@ -211,6 +232,7 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     transform: translateY(2px);
     box-shadow: 0 1px 0 color-mix(in srgb, var(--accent-primary) 60%, #000000);
   }
+
   /* ============ Backdrop ============ */
   .header__backdrop {
     position: fixed;
@@ -221,9 +243,9 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     opacity: 0;
     pointer-events: none;
     transition:
-      opacity 0.3s ease,
-      backdrop-filter 0.3s ease,
-      background-color 0.3s ease;
+      opacity var(--transition-speed) var(--transition-ease),
+      backdrop-filter var(--transition-speed) var(--transition-ease),
+      background-color var(--transition-speed) var(--transition-ease);
   }
 
   .header__backdrop.is-visible {
