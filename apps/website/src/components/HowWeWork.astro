@@ -1,0 +1,184 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="howWeWork" id="howWeWork">
+  <div class="howWeWork__container">
+    <div class="howWeWork__title">
+      <h2 class="howWeWork__heading">Cómo Trabajamos</h2>
+      <p class="howWeWork__subtitle">
+        Desde el primer contacto hasta conectar con el locutor ideal
+      </p>
+    </div>
+
+    <ol class="howWeWork__steps" aria-label="Pasos del proceso">
+      <li class="howWeWork__step" data-step="1">
+        <div class="howWeWork__hexagon" aria-hidden="true">
+          <Icon name="material-symbols:chat-rounded" class="howWeWork__icon" />
+        </div>
+        <div class="howWeWork__description">
+          <h3 class="howWeWork__step-title">Cuéntanos tu proyecto</h3>
+          <p class="howWeWork__step-text">
+            Comparte con nosotros el objetivo de tu campaña, el tono que buscas
+            y dónde se utilizará
+          </p>
+        </div>
+      </li>
+
+      <li class="howWeWork__connector" aria-hidden="true">
+        <span class="howWeWork__connector-line"></span>
+      </li>
+
+      <li class="howWeWork__step" data-step="2">
+        <div class="howWeWork__hexagon" aria-hidden="true">
+          <Icon
+            name="material-symbols:person-search-rounded"
+            class="howWeWork__icon"
+          />
+        </div>
+        <div class="howWeWork__description">
+          <h3 class="howWeWork__step-title">Seleccionamos</h3>
+          <p class="howWeWork__step-text">
+            Seleccionamos a los locutores ideales para tu campaña y te
+            presentamos las mejores opciones
+          </p>
+        </div>
+      </li>
+
+      <li class="howWeWork__connector" aria-hidden="true">
+        <span class="howWeWork__connector-line"></span>
+      </li>
+
+      <li class="howWeWork__step" data-step="3">
+        <div class="howWeWork__hexagon" aria-hidden="true">
+          <Icon name="material-symbols:link-rounded" class="howWeWork__icon" />
+        </div>
+        <div class="howWeWork__description">
+          <h3 class="howWeWork__step-title">Conectamos ambas partes</h3>
+          <p class="howWeWork__step-text">
+            Facilitamos el contacto entre cliente y locutor, además de gestionar
+            acuerdos y seguimiento durante el proyecto
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="howWeWork__tagline">
+      Tú tienes el mensaje. Nosotros encontramos la voz.
+    </p>
+  </div>
+</section>
+
+<style>
+  /* ============ Section ============ */
+  .howWeWork {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .howWeWork__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  /* ============ Title ============ */
+  .howWeWork__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .howWeWork__heading {
+    position: relative;
+    padding-top: 0.75rem;
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: var(--accent-primary);
+  }
+
+  .howWeWork__heading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background-color: var(--accent-primary);
+    border-radius: 999px;
+  }
+
+  .howWeWork__subtitle {
+    padding-top: 0.75rem;
+    font-size: var(--fs-base);
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .howWeWork__title p {
+    padding-top: 0.75rem;
+    font-size: var(--fs-base);
+    font-weight: 700;
+  }
+
+  .howWeWork__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  .howWeWork__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .howWeWork__hexagon {
+    width: 35%;
+    min-width: 80px;
+    max-width: 130px;
+    aspect-ratio: 1 / 1.1547;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .howWeWork__icon {
+    width: 45%;
+    height: 45%;
+    color: var(--text-primary);
+  }
+
+  .howWeWork__description h3 {
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: var(--accent-primary);
+    letter-spacing: var(--ls-caps);
+    margin: 0 0 0.5rem;
+  }
+
+  .howWeWork__description p {
+    font-size: var(--fs-base);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .howWeWork__steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .howWeWork__hexagon {
+      width: 55%;
+    }
+  }
+</style>
