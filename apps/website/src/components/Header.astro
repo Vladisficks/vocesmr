@@ -53,7 +53,13 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
     z-index: var(--z-header);
     border-radius: calc(8px + 0.5rem);
     background-color: rgba(31, 31, 36, 0);
-    transition: background-color var(--transition-speed) var(--transition-ease);
+    transition:
+      background-color var(--transition-speed) var(--transition-ease),
+      transform 0.3s var(--transition-ease);
+  }
+
+  .header.is-hidden {
+    transform: translateY(calc(-100% - 0.75rem));
   }
 
   .header.is-open,
@@ -350,20 +356,42 @@ const aboutHref = currentPath === "/" ? "#aboutUs" : "/#aboutUs";
 
   menuToggle?.addEventListener("click", toggleMenu);
 
-  // ============= Close when clicks in a link/CTA =============
   nav?.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
     if (target.closest("a")) setTimeout(closeMenu, 150);
   });
 
-  // ============= Close when clicks in the backdrop =============
   backdrop?.addEventListener("click", closeMenu);
 
   // ============= Scroll effect =============
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) header?.classList.add("is-scrolled");
-    else header?.classList.remove("is-scrolled");
-  });
+  const SCROLL_THRESHOLD = 80;
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScrollY = window.scrollY;
+      const menuIsOpen = menuToggle?.getAttribute("aria-expanded") === "true";
+
+      // Scroll effect: fondo visible
+      if (currentScrollY > 20) header?.classList.add("is-scrolled");
+      else header?.classList.remove("is-scrolled");
+
+      // Hide/show: solo actúa si el menú está cerrado
+      if (!menuIsOpen) {
+        if (currentScrollY > lastScrollY && currentScrollY > SCROLL_THRESHOLD) {
+          // Scrolleando hacia abajo y ya pasamos el umbral → esconder
+          header?.classList.add("is-hidden");
+        } else {
+          // Scrolleando hacia arriba (o arriba del umbral) → mostrar
+          header?.classList.remove("is-hidden");
+        }
+      }
+
+      lastScrollY = currentScrollY;
+    },
+    { passive: true },
+  );
 
   // ============= Close when back to desktop =============
   window.addEventListener("resize", () => {
