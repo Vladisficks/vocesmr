@@ -55,13 +55,13 @@ import { Icon } from "astro-icon/components";
   }
 
   .whyUs__container {
-    padding: 2.5rem 1rem;
+    padding: 2.5rem clamp(1.5rem, 5vw, 6rem);
   }
 
   .whyUs__sections {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2.5rem;
     padding-inline-end: var(--card-shadow-offset);
     padding-block-end: var(--card-shadow-offset);
   }
