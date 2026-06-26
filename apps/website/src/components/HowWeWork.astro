@@ -11,9 +11,9 @@ import { Icon } from "astro-icon/components";
       </p>
     </div>
 
-    <ol class="howWeWork__steps" aria-label="Pasos del proceso">
-      <li class="howWeWork__step" data-step="1">
-        <div class="howWeWork__hexagon" aria-hidden="true">
+    <ol class="howWeWork__steps">
+      <li class="howWeWork__step">
+        <div class="howWeWork__hexagon">
           <Icon name="material-symbols:chat-rounded" class="howWeWork__icon" />
         </div>
         <div class="howWeWork__description">
@@ -25,32 +25,24 @@ import { Icon } from "astro-icon/components";
         </div>
       </li>
 
-      <li class="howWeWork__connector" aria-hidden="true">
-        <span class="howWeWork__connector-line"></span>
-      </li>
-
-      <li class="howWeWork__step" data-step="2">
-        <div class="howWeWork__hexagon" aria-hidden="true">
+      <li class="howWeWork__step">
+        <div class="howWeWork__hexagon">
           <Icon
             name="material-symbols:person-search-rounded"
             class="howWeWork__icon"
           />
         </div>
         <div class="howWeWork__description">
-          <h3 class="howWeWork__step-title">Seleccionamos</h3>
+          <h3 class="howWeWork__step-title">Encontramos tu voz</h3>
           <p class="howWeWork__step-text">
-            Seleccionamos a los locutores ideales para tu campaña y te
-            presentamos las mejores opciones
+            Elegimos a los locutores ideales para tu campaña y te presentamos
+            las mejores opciones
           </p>
         </div>
       </li>
 
-      <li class="howWeWork__connector" aria-hidden="true">
-        <span class="howWeWork__connector-line"></span>
-      </li>
-
-      <li class="howWeWork__step" data-step="3">
-        <div class="howWeWork__hexagon" aria-hidden="true">
+      <li class="howWeWork__step">
+        <div class="howWeWork__hexagon">
           <Icon name="material-symbols:link-rounded" class="howWeWork__icon" />
         </div>
         <div class="howWeWork__description">
@@ -64,34 +56,43 @@ import { Icon } from "astro-icon/components";
     </ol>
 
     <p class="howWeWork__tagline">
-      Tú tienes el mensaje. Nosotros encontramos la voz.
+      Tú tienes el mensaje. Nosotros encontramos la voz que lo representa
     </p>
   </div>
 </section>
 
 <style>
-  /* ============ Section ============ */
+  /* ============ Tokens ============ */
   .howWeWork {
+    --hw-hex-size: clamp(80px, 18vw, 130px);
+    --hw-hex-ratio: 1.1547; /* hexágono pointy-top: alto = ancho * ratio */
+    --hw-line: 3px;
+    --hw-step-gap: 3rem; /* gap entre pasos = largo del conector */
+    --hw-stagger: 0.2s; /* retraso base entre pasos */
+
     padding: 2.5rem 1.5rem;
   }
 
+  /* ============ Layout general ============ */
   .howWeWork__container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    justify-items: center;
     text-align: center;
     gap: 2.5rem;
+    max-width: 960px;
+    margin-inline: auto;
   }
 
-  /* ============ Title ============ */
   .howWeWork__title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
   }
 
   .howWeWork__heading {
     position: relative;
+    width: fit-content;
+    margin-inline: auto;
     padding-top: 0.75rem;
     font-size: var(--fs-lg);
     font-weight: 700;
@@ -103,82 +104,214 @@ import { Icon } from "astro-icon/components";
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 50%; 
     height: 4px;
-    background-color: var(--accent-primary);
+    background: var(--accent-primary);
     border-radius: 999px;
   }
 
   .howWeWork__subtitle {
-    padding-top: 0.75rem;
     font-size: var(--fs-base);
     font-weight: 500;
     color: var(--text-muted);
     line-height: 1.6;
   }
 
-  .howWeWork__title p {
-    padding-top: 0.75rem;
-    font-size: var(--fs-base);
-    font-weight: 700;
-  }
-
+  /* ============ Step lines ============ */
   .howWeWork__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.75rem;
+    gap: var(--hw-step-gap);
+    justify-items: center;
   }
 
+  /* ============ Step ============ */
   .howWeWork__step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    z-index: 0;
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
     text-align: center;
-    gap: 1.25rem;
+    width: 100%;
   }
 
+  /* ============ Connector ============ */
+  .howWeWork__step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: var(--hw-line);
+    height: var(--hw-step-gap);
+    background: linear-gradient(to bottom, var(--accent-primary), transparent);
+    border-radius: 999px;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top center;
+    transition: transform 0.5s ease;
+    transition-delay: calc(var(--step-index, 0) * var(--hw-stagger) + 0.45s);
+  }
+
+  .howWeWork__step.is-visible:not(:last-child)::after {
+    transform: translateX(-50%) scaleY(1);
+  }
+
+  /* ============ Hexágono ============ */
   .howWeWork__hexagon {
-    width: 35%;
-    min-width: 80px;
-    max-width: 130px;
-    aspect-ratio: 1 / 1.1547;
+    position: relative;
+    z-index: 1;
+    width: var(--hw-hex-size);
+    aspect-ratio: 1 / var(--hw-hex-ratio);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     background: var(--accent-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
+
+    opacity: 0;
+    transform: scale(0.8) rotate(-8deg);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: calc(var(--step-index, 0) * var(--hw-stagger));
   }
 
+  .howWeWork__step.is-visible .howWeWork__hexagon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+
+  .howWeWork__step:hover .howWeWork__hexagon {
+    transform: rotate(15deg) scale(1.05);
+  }
+
+  /* ============ Icono ============ */
   .howWeWork__icon {
     width: 45%;
     height: 45%;
     color: var(--text-primary);
+
+    opacity: 0;
+    transform: scale(0.5);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+    transition-delay: calc(var(--step-index, 0) * var(--hw-stagger) + 0.15s);
   }
 
-  .howWeWork__description h3 {
+  .howWeWork__step.is-visible .howWeWork__icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ============ Texto ============ */
+  .howWeWork__description {
+    display: grid;
+    gap: 0.5rem;
+
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+    transition-delay: calc(var(--step-index, 0) * var(--hw-stagger) + 0.3s);
+  }
+
+  .howWeWork__step.is-visible .howWeWork__description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .howWeWork__step-title {
     font-size: var(--fs-md);
     font-weight: 700;
     color: var(--accent-primary);
     letter-spacing: var(--ls-caps);
-    margin: 0 0 0.5rem;
-  }
-
-  .howWeWork__description p {
-    font-size: var(--fs-base);
-    color: var(--text-muted);
-    font-weight: 500;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.3;
+    min-height: calc(1.3em * 2);
   }
 
+  .howWeWork__step-text {
+    font-size: var(--fs-base);
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ============ Tagline ============ */
+  .howWeWork__tagline {
+    font-size: var(--fs-base);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  /* ============ Desktop: solo invertimos la orientación ============ */
   @media (min-width: 768px) {
     .howWeWork__steps {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2rem;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      align-items: start;
     }
 
-    .howWeWork__hexagon {
-      width: 55%;
+    /* Conector horizontal, centrado en el hexágono vía tokens */
+    .howWeWork__step:not(:last-child)::after {
+      top: calc(var(--hw-hex-size) * var(--hw-hex-ratio) / 2);
+      left: 50%;
+      width: calc(100% + var(--hw-step-gap));
+      height: var(--hw-line);
+      background: linear-gradient(to right, var(--accent-primary), transparent);
+      transform: translateY(-50%) scaleX(0);
+      transform-origin: left center;
+    }
+
+    .howWeWork__step.is-visible:not(:last-child)::after {
+      transform: translateY(-50%) scaleX(1);
+    }
+  }
+
+  /* ============ Accesibilidad ============ */
+  @media (prefers-reduced-motion: reduce) {
+    .howWeWork__hexagon,
+    .howWeWork__icon,
+    .howWeWork__description {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .howWeWork__step:not(:last-child)::after {
+      transition: none;
+      transform: translateX(-50%) scaleY(1);
+    }
+
+    @media (min-width: 768px) {
+      .howWeWork__step:not(:last-child)::after {
+        transform: translateY(-50%) scaleX(1);
+      }
     }
   }
 </style>
+
+<script>
+  const steps = document.querySelectorAll<HTMLElement>(".howWeWork__step");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.3 },
+  );
+
+  steps.forEach((step, index) => {
+    step.style.setProperty("--step-index", String(index));
+    observer.observe(step);
+  });
+</script>
